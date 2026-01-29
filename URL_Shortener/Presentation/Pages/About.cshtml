@@ -1,0 +1,47 @@
+@page
+@model URL_Shortener.Pages.AboutModel
+@{
+    ViewData["Title"] = "About URL Shortener";
+}
+
+<div class="container mt-5">
+    <h1>About URL Shortener</h1>
+    <hr />
+
+    @if (TempData["Message"] != null)
+    {
+        <div class="alert alert-success">@TempData["Message"]</div>
+    }
+
+    <div class="content-section">
+        @foreach (var info in Model.Infos)
+        {
+            <div class="card mb-3">
+                <div class="card-body">
+                    @if (Model.IsAdmin)
+                    {
+                        <form method="post">
+                            <input type="hidden" name="id" value="@info.Id" />
+                            <div class="mb-3">
+                                <textarea name="content" class="form-control" rows="4">@info.Content</textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary">Update Section</button>
+                        </form>
+                    }
+                    else
+                    {
+                        <p class="card-text" style="white-space: pre-wrap;">@info.Content</p>
+                        <small class="text-muted">Last updated: @info.UpdatedAtUtc.ToLocalTime()</small>
+                    }
+                </div>
+            </div>
+        }
+    </div>
+
+    <div class="mt-4">
+        <h3>Algorithm</h3>
+        <p>
+            Our URL Shortener uses a custom random generation algorithm. When a user submits a long URL, we generate a unique 6-character code using an alphabet of 62 characters (a-z, A-Z, 0-9). This allows for over 56 billion unique combinations.
+        </p>
+    </div>
+</div>
