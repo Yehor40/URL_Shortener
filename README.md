@@ -32,17 +32,16 @@ You can run the entire application stack using Docker Compose.
 
 ### Running the App
 
-1. **Clone the repository** (if you haven't already).
-2. **Navigate to the solution root** (where `docker-compose.yml` is).
-3. **Build and start the containers**:
+1. **Navigate to the solution root** (where `docker-compose.yml` is).
+2. **Build and start the containers**:
    ```bash
    docker-compose up --build
    ```
 
-4. **Access the Application**:
+3. **Access the Application**:
    - **Frontend**: Open [http://localhost:4200](http://localhost:4200) in your browser.
-   - **Backend API**: Accessible at [http://localhost:5094](http://localhost:5000).
-   - **Swagger UI**: [http://localhost:5094/swagger](http://localhost:5000/swagger) (Note: Swagger might be disabled in Production mode by default, check `Program.cs` or set `ASPNETCORE_ENVIRONMENT=Development` in `docker-compose.yml` if you need it).
+   - **Backend API**: Accessible at [http://localhost:5049](http://localhost:5049).
+   - **Swagger UI**: [http://localhost:5049/swagger](http://localhost:5049/swagger) (Enabled via `ASPNETCORE_ENVIRONMENT=Development` in `docker-compose.yml`).
 
 ### Stopping the App
 Press `Ctrl+C` in the terminal or run:
@@ -56,7 +55,7 @@ docker-compose down
 1. Navigate to `URL_Shortener` project directory.
 2. Run `dotnet restore`.
 3. Run `dotnet run`.
-4. API runs on `http://localhost:5094` (or configured port).
+4. API runs on `http://localhost:5094` (typical default) or as configured in `launchSettings.json`.
 
 ### Frontend
 1. Navigate to `URL_Shortener/ClientApp`.
@@ -68,3 +67,4 @@ docker-compose down
 - Shorten long URLs.
 - Redirect to original URLs.
 - Admin/User authentication.
+- View analytics.
